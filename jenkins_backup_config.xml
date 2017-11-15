@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.6.4">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/JacopoMangiavacchi/jenkinsTest</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <au.com.rayh.XCodeBuilder plugin="xcode-plugin@2.0.0">
+      <cleanBeforeBuild>false</cleanBeforeBuild>
+      <cleanTestReports>false</cleanTestReports>
+      <configuration>Debug</configuration>
+      <target>jenkinsTest</target>
+      <sdk></sdk>
+      <symRoot></symRoot>
+      <buildDir></buildDir>
+      <xcodeProjectPath></xcodeProjectPath>
+      <xcodeProjectFile></xcodeProjectFile>
+      <xcodebuildArguments> test -destination &quot;platform=iOS Simulator,id=720D3E39-7452-4543-9C9F-572BDC16CF59&quot;</xcodebuildArguments>
+      <xcodeSchema>jenkinsTest</xcodeSchema>
+      <xcodeWorkspaceFile></xcodeWorkspaceFile>
+      <cfBundleVersionValue></cfBundleVersionValue>
+      <cfBundleShortVersionStringValue></cfBundleShortVersionStringValue>
+      <buildIpa>false</buildIpa>
+      <ipaExportMethod>ad-hoc</ipaExportMethod>
+      <generateArchive>false</generateArchive>
+      <unlockKeychain>false</unlockKeychain>
+      <keychainName>none (specify one below)</keychainName>
+      <keychainPath></keychainPath>
+      <keychainPwd></keychainPwd>
+      <developmentTeamName>none (specify one below)</developmentTeamName>
+      <developmentTeamID>Jacopo Mangiavacchi</developmentTeamID>
+      <allowFailingBuildResults>false</allowFailingBuildResults>
+      <ipaName></ipaName>
+      <ipaOutputDirectory></ipaOutputDirectory>
+      <provideApplicationVersion>false</provideApplicationVersion>
+      <changeBundleID>false</changeBundleID>
+      <bundleID></bundleID>
+      <bundleIDInfoPlistPath></bundleIDInfoPlistPath>
+      <interpretTargetAsRegEx>false</interpretTargetAsRegEx>
+      <ipaManifestPlistUrl></ipaManifestPlistUrl>
+    </au.com.rayh.XCodeBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.22.2">
+      <testResults>test-reports/*.xml</testResults>
+      <keepLongStdio>false</keepLongStdio>
+      <healthScaleFactor>1.0</healthScaleFactor>
+      <allowEmptyResults>false</allowEmptyResults>
+    </hudson.tasks.junit.JUnitResultArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>
